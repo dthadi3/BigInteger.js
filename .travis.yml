@@ -6,6 +6,12 @@ node_js:
   - "12"
   - "11"
   - "10"
+before_script:
+  - |
+   if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then
+     sudo apt update
+     sudo apt install uglify-js 
+   fi
 script:
  - npm test
  - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
