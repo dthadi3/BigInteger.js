@@ -10,7 +10,9 @@ node_js:
 before_install:
   - |
    if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then
-     sudo apt-get install phantomjs 
+     sudo apt-get install phantomjs
+     sudo xhost+
+     export DISPLAY=:0.0 
    fi
 script:
  - npm test
