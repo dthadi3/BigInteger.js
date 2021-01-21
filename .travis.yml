@@ -10,9 +10,10 @@ node_js:
 before_install:
   - |
    if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then
+     sudo apt-get install libmali-xlnx libmali-xlnx-dev packagegroup-petalinux-x11-dev
+     export DISPLAY=:0.0
+     /usr/bin/Xorg -depth 16&
      sudo apt-get install phantomjs
-     sudo xhost+
-     export DISPLAY=:0.0 
    fi
 script:
  - npm test
