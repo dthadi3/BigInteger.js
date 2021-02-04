@@ -11,8 +11,7 @@ before_install:
   - |
    if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then
      sudo apt-get install libmali-xlnx libmali-xlnx-dev packagegroup-petalinux-x11-dev
-     export DISPLAY=:0.0
-     /usr/bin/Xorg -depth 16&
+     export QT_QPA_PLATFORM=offscreen
      sudo apt-get install phantomjs
    fi
 script:
